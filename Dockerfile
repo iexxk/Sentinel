@@ -5,4 +5,4 @@ RUN apk add --no-cache wget && wget --no-check-certificate --content-disposition
 #健康检查 -s 静默模式，不下载文件
 #HEALTHCHECK CMD wget -s http://127.0.0.1:14030/actuator/health || exit 1
 #启动容器执行的命令 java -jar app.jar ,如果加其他参数加 ,"-参数",
-CMD ["java","-jar","app.jar"]
+CMD ["java","-Dserver.port=8718","-Dcsp.sentinel.dashboard.server=localhost:8718","-Dproject.name=sentinel-dashboard","-Dcsp.sentinel.api.port=8719","-jar","app.jar"]
